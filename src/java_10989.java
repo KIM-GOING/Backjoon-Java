@@ -1,34 +1,30 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class java_10989 {
 
-    static int totalNum;
-    static Scanner sc = new Scanner(System.in);
-    static ArrayList<Integer> nums = new ArrayList<Integer>();
+    static int[] num = new int[10001];
 
-    public static void main(String[] args) {
-        totalNum = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int cnt = Integer.parseInt(br.readLine());
 
-        inputNums();
-        sortNums();
-        printNums();
-    }
-
-    public static void inputNums() {
-        for(int i = 0; i < totalNum; i++){
-            nums.add(sc.nextInt());
+        for(int i = 0; i < cnt; i++) {
+            num[Integer.parseInt(br.readLine())]++;
         }
-    }
 
-    public static void sortNums() {
-        Collections.sort(nums);
-    }
+        br.close();
 
-    public static void printNums() {
-        for(int i = 0; i < totalNum; i++){
-            System.out.println(nums.get(i));
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < 10001; i++) {
+            while(num[i] > 0) {
+                sb.append(i).append("\n");
+                num[i]--;
+            }
         }
+        System.out.println(sb);
     }
+
 }
